@@ -1,0 +1,45 @@
+<tr>
+<td><h1>Authors</h1></td>
+<td><button 
+  (click)="openAddDialog()"
+  kendoButton size="large" class="addNew" icon="form-element"
+>
+  ADD A NEW AUTHOR
+</button>
+</td>
+</tr>
+<table>
+  <tr>
+  <th><h2>Name</h2></th>
+  <th><h2>Genres</h2></th>
+  <th><h2>Born</h2></th>
+  <th><h2>Died</h2></th>
+</tr>
+<tr *ngFor="let author of authors">
+  <td>
+    <h2>{{ author.name }}</h2>
+  </td>
+   <td>
+    <h2>{{ showGenres(author.genreId) }}</h2>
+  </td>
+   <td>
+    <h2>{{ author.born | date:"dd/MM/yyyy" }}</h2>
+  </td>
+   <td>
+    <h2>{{ author.died | date:"dd/MM/yyyy"}}</h2>
+  </td>
+    <h6>
+      <td>
+        <button (click)="openEditDialog(author)" kendoButton themeColor="info" size="large">
+            Edit
+        </button>
+        </td>
+         <td>
+        <button (click)="openDelDialog(author)" kendoButton themeColor="error" size="large"  icon="delete">
+      Delete
+    </button>
+    </td>
+    </h6>
+</tr>
+</table>
+<div kendoDialogContainer></div> 

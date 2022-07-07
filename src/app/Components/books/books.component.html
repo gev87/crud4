@@ -1,0 +1,61 @@
+ <tr>
+    <h1>
+     
+    <td>Books</td>
+    </h1>
+    <td><button kendoButton
+      icon="form-element"
+  (click)="addNew()"
+  class="addNew"
+  size="large"
+>
+ ADD A NEW BOOK</button></td>
+  </tr>
+<table>
+  
+  <tr>
+   
+  <th><h2>Title</h2></th>
+    <th><h2>Publish date</h2></th>
+    <th><h2>Pages</h2></th>
+     <th><h2>Genre</h2></th>
+     <th><h2>Author</h2></th>
+  
+ </tr>
+<tr *ngFor="let book of books">
+  <td >
+   
+    <h3 >{{ book.name }}</h3>
+  </td>
+      <td>
+        <h3>{{book.published | date:"dd/MM/yyyy"}}</h3>
+      </td>
+      
+      <td>
+        <h3>{{ book.pages }}</h3>
+      </td>
+          <td>
+        <h3>{{getGenreNamebyId(book.genreId)}}</h3>
+      </td>
+       <td>
+        <h3>{{getAuthorNamebyId(book.authorId)}}</h3>
+      </td>
+      <td>
+        <button kendoButton size="large" themeColor="info" (click)="edit(book)">
+            Edit
+        </button>
+        </td>
+         <td>
+        <button
+        size="large"  icon="delete"
+       kendoButton themeColor="error"
+      (click)="delete(book)"
+    >
+      Delete
+    </button>
+    </td>
+   
+</tr>
+</table>
+<div kendoDialogContainer></div> 
+

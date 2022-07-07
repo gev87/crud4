@@ -1,0 +1,27 @@
+
+
+    <div>
+      <form class="k-form" [formGroup]="formGroup">
+        <kendo-formfield> 
+          <label for="genre">{{!add ? "new Genre":"Edit here"}}</label>
+          <input id="genre" formControlName="genre" kendoTextBox />
+           <kendo-formerror  >Error: Genre is required</kendo-formerror>
+     </kendo-formfield>
+      </form>
+    </div>
+
+    <kendo-dialog-actions>
+      <button kendoButton (click)="onCancelAction()">Cancel</button>
+      <button
+        kendoButton
+        (click)="onConfirmAction()"
+       themeColor="info"
+        [disabled]="!formGroup.valid"
+        [ngClass]="{'add': !genre }"
+      >
+        {{ genre? "Submit":"Add"}}
+      </button>
+       <!-- <ng-template #elseBlock><button  kendoButton class ="add"  [disabled]="!formGroup.valid"   (click)="onConfirmAction()">Add</button></ng-template> -->
+    </kendo-dialog-actions>
+
+

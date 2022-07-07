@@ -1,0 +1,20 @@
+.title {
+  margin: 10px;
+}
+
+.add {
+  background: green;
+  color: white;
+}
+
+.flex{
+  display:flex;
+   /* flex-wrap: nowrap; */
+}
+
+.flex > div{
+  margin: 10px;
+} 
+.half{
+flex:1;
+}  

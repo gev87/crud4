@@ -1,0 +1,35 @@
+<!-- <h3 *ngIf="cannotDeleteGenre">
+  <b>{{ connectedAuthors }}</b> in your library use{{
+    connectedAuthors.includes(",") ? "s" : ""
+  }}
+  {{ genre?.name }}.
+</h3>
+<h3 *ngIf="!cannotDeleteGenre">
+  Are you sure you want to delete {{ genre?.name }}?
+</h3>
+<h3 *ngIf="cannotDeleteAuthor">
+  <b>{{ connectedBooks }}</b> in your library
+  {{ connectedBooks.includes(", ") ? "are" : "is" }} written by
+  {{ author.name }}.
+</h3>
+<h3 *ngIf="deleteAuthor">Are you sure you want to delete {{ author.name }}?</h3> -->
+
+<kendo-dialog-titlebar themeColor='primary'>
+  <ng-container *ngIf="deletingItemIsExists; else canDelete">
+    You cannot delete {{ item.name }}
+  </ng-container>
+  <ng-template #canDelete> Please confirm deleting {{ item.name }} </ng-template>
+</kendo-dialog-titlebar>
+<ng-container *ngIf="deletingItemIsExists; else canDeleteMessage">
+  {{ existingMessage }}
+</ng-container>
+<ng-template #canDeleteMessage> Are you sure you want to delete {{ item.name }}? </ng-template>
+<kendo-dialog-actions>
+  <ng-container  *ngIf="deletingItemIsExists; else deleteingActions">
+    <button kendoButton themeColor='info' (click)="closeDialog()">OK</button>
+  </ng-container>
+  <ng-template  #deleteingActions>
+    <button kendoButton themeColor='primary' (click)="deleteItem()">Delete</button>
+    <button kendoButton (click)="closeDialog()">Cancel</button>
+  </ng-template>
+</kendo-dialog-actions>

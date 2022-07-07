@@ -1,0 +1,33 @@
+
+<table>
+  <tr>
+    <td><h1>Genres </h1></td>
+     <td><button kendoButton size="large" class="addNew" icon="form-element" (click)="openAddDialog()" >
+  ADD A NEW GENRE
+</button></td>
+  </tr>
+<tr *ngFor="let elem of genres">
+  <td>
+    <h2>{{ elem.name }}</h2>
+    </td>
+  
+    <h6>
+        <td>
+        <button  kendoButton themeColor="info" size="large" (click)="openEditDialog(elem)">
+            Edit
+        </button>
+        </td>
+         <td>
+        <button
+       kendoButton themeColor="error" size="large"  icon="delete" (click)="openDeleteDialog(elem)"
+    >
+      Delete
+    </button>
+    </td>
+    </h6>
+</tr>
+</table>
+<div kendoDialogContainer></div> 
+
+
+ 

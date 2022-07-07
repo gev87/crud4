@@ -1,0 +1,55 @@
+<div>
+  <form class="k-form" [formGroup]="formGroup">
+    <div class="flex">
+      <div class="half">
+        <kendo-formfield>
+          <label for="author">Name:</label>
+          <input id="author" formControlName="name" kendoTextBox />
+          <kendo-formerror>Error: Author name is required</kendo-formerror>
+        </kendo-formfield>
+      </div>
+      <div class="half">
+        <kendo-formfield>
+          <label for="genre"> Genre:</label>
+          <kendo-multiselect
+            formControlName="genreId"
+            [data]="genres"
+            valueField="id"
+            textField="name"
+            [valuePrimitive]="true"
+          >
+          </kendo-multiselect>
+        </kendo-formfield>
+      </div>
+    </div>
+    <div class="flex">
+      <div class="half">
+        <p>Date of birth:</p>
+        <kendo-datepicker format="dd/MM/yyyy" formControlName="born" id="date1">
+          ></kendo-datepicker
+        >
+      </div>
+      <div class="half">
+        <p>Date of death:</p>
+        <kendo-datepicker
+          format="dd/MM/yyyy"
+          formControlName="died"
+          id="date2"
+        ></kendo-datepicker>
+      </div>
+    </div>
+    <kendo-dialog-actions>
+      <button kendoButton (click)="onCancelAction()">Cancel</button>
+
+      <button
+        kendoButton
+        themeColor="info"
+        [disabled]="!formGroup.valid"
+        (click)="onConfirmAction()"
+        [ngClass]="{'add': !author.id }"
+      >
+        Submit
+      </button>
+    </kendo-dialog-actions>
+  </form>
+</div>

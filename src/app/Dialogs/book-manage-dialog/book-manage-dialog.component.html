@@ -1,0 +1,69 @@
+<div>
+  <!-- {{ filteredAuthors | json}} -->
+  <form class="k-form" [formGroup]="formGroup">
+    <div class="title">
+      <kendo-formfield>
+        <label for="book">Title:</label>
+        <input id="book" formControlName="name" kendoTextBox />
+        <kendo-formerror>Error: Author name is required</kendo-formerror>
+      </kendo-formfield>
+    </div>
+    <div class="flex">
+      <div class="half">
+        <label for="published">Publish date:</label>
+        <kendo-datepicker
+          format="dd/MM/yyyy"
+          formControlName="published"
+          id="date1"
+        >
+          ></kendo-datepicker
+        >
+      </div>
+      <div class="half">
+        <label for="pages">Number of pages:</label>
+        <kendo-numerictextbox format="n0" formControlName="pages">
+        </kendo-numerictextbox>
+      </div>
+    </div>
+    <div class="flex">
+      <div class="half">
+        <kendo-formfield>
+          <label for="genre"> Genre:</label>
+          <kendo-dropdownlist
+            [data]="genres"
+            formControlName="genreId"
+            valueField="id"
+            textField="name"
+            [valuePrimitive]="true"
+          >
+          </kendo-dropdownlist>
+        </kendo-formfield>
+      </div>
+      <div class="half">
+        <kendo-formfield>
+          <label for="author"> Author:</label>
+          <kendo-dropdownlist
+            [data]="filteredAuthors"
+            formControlName="authorId"
+            valueField="id"
+            textField="name"
+            [valuePrimitive]="true"
+          >
+          </kendo-dropdownlist>
+        </kendo-formfield>
+      </div>
+    </div>
+    <kendo-dialog-actions>
+      <button kendoButton (click)="onCancelAction()">Cancel</button>
+      <button
+        kendoButton
+        themeColor="info"
+        [disabled]="!formGroup.valid"
+        (click)="onConfirmAction()"
+        [ngClass]="{ add: !filteredAuthors }"
+      >
+       {{filteredAuthors? "Submit" :""}}
+      </button>
+    </kendo-dialog-actions>
+  </form>
+</div>
